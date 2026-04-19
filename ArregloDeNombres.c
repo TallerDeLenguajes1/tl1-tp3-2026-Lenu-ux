@@ -34,3 +34,15 @@ void MostrarPersonas(char *v[],int cant){
     }
     
 }
+void BuscarNombre(int ID,char *v[],int cant){
+    int encontrado=0;
+    
+        if (ID>=0 && ID < cant)
+        {
+            printf("Id %d: %s\n",ID,v[ID]);
+
+        }else{
+            printf("no se encontró el valor buscado\n");
+        }
+    
+}
