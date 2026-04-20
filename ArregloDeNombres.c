@@ -34,3 +34,16 @@ void MostrarPersonas(char *v[],int cant){
     }
     
 }
+int BusarNombre(char *v[],int cant, char *paClave){
+    //recorro el arreglo
+    for (int i = 0; i < cant; i++)
+    {
+        //strstr busca una cadena dentro de otra cadena, devuelve un puntero a la primera posicion donde aparece dentro del texto
+        if (strstr(v[i],paClave) != NULL)
+        {
+            return i;
+        }
+        
+    }
+    return -1;
+}
