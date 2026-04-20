@@ -34,7 +34,7 @@ void MostrarPersonas(char *v[],int cant){
     }
     
 }
-int BusarNombre(char *v[],int cant, char *paClave){
+int BusarNombrePorPalabra(char *v[],int cant, char *paClave){
     //recorro el arreglo
     for (int i = 0; i < cant; i++)
     {
@@ -46,4 +46,16 @@ int BusarNombre(char *v[],int cant, char *paClave){
         
     }
     return -1;
+}
+void BuscarNombrePorId(int ID,char *v[],int cant){
+    int encontrado=0;
+    
+        if (ID>=0 && ID < cant)
+        {
+            printf("Id %d: %s\n",ID,v[ID]);
+
+        }else{
+            printf("no se encontró el valor buscado\n");
+        }
+    
 }
