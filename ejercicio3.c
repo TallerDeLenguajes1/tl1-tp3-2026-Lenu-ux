@@ -30,6 +30,7 @@ int main(){
     {
         printf("Ingrese la cantidad de clientes a cargar: ");
         scanf("%d",&cantClientes);
+        
     } while (cantClientes<5);
     
     
@@ -60,17 +61,20 @@ void cargarDatos(Cliente *c, int cant){
         printf("Ingrese el nombre del cliente %d: ",i+1);
         gets(buff);
         fflush(stdin);
-        //cantidad de productos que pedira el cliente
+       
         c[i].NombreCliente=malloc(strlen(buff)+1);
         strcpy(c[i].NombreCliente,buff);
-
+         //cantidad de productos que pedira el cliente
+        printf("\nCantidad de productos a pedir: ");
+        scanf("%d",&c[i].CantProductosAPedir);
+        fflush(stdin);
         cargarProductos(&c[i]);
     }
     
 }
 
 void cargarProductos(Cliente *c){
-    c->Productos=(Producto *)malloc(c->CantProductosAPedir);
+    c->Productos=(Producto *)malloc(sizeof(Producto)*c->CantProductosAPedir);
     for (int i = 0; i < c->CantProductosAPedir; i++)
     {
         c->Productos[i].ProductoID=i+1;
@@ -96,12 +100,12 @@ void mostrarTodo(Cliente *c,int cant){
         printf("Cliente ID: %d\nNombre:%s\n",c[i].ClienteID,c[i].NombreCliente);
         printf("Productos pedidos:\n");
 
-        for (int j = 0; j < c->CantProductosAPedir; j++)
+        for (int j = 0; j < c[i].CantProductosAPedir; j++)
         {
             float subtotal=calcularCostoTotal(c[i].Productos[j]);
             totalPagar +=subtotal;
 
-            printf("ID: %d\tTipo:%s\t Cantidad:%d\t Precio:$%.2f /t Subtotal:$%.2f\n",c[i].Productos[j].ProductoID,c[i].Productos[j].TipoProducto,c[i].Productos[j].cant,c[i].Productos[j].PrecioUnitario,subtotal);
+            printf("ID: %d\tTipo:%s\t Cantidad:%d\t Precio:$%.2f/t Subtotal:$%.2f\n",c[i].Productos[j].ProductoID,c[i].Productos[j].TipoProducto,c[i].Productos[j].cant,c[i].Productos[j].PrecioUnitario,subtotal);
 
         }
         printf("\nTotal a pagar por cliente: $%.2f",totalPagar);
